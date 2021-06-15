@@ -22,14 +22,15 @@ class DiceBloc extends IDiceBloc {
   @override
   void roll() {
     this._diceValues.clear();
-    int score = 0;
+    int _score = 0;
+    int _randomValue;
     for (int i = 0; i < Constants.diceCount; i++) {
-      int randomValue = Random().nextInt(Constants.diceFaces) + 1;
-      this._diceValues.add(randomValue);
-      score += randomValue;
+      _randomValue = Random().nextInt(Constants.diceFaces) + 1;
+      this._diceValues.add(_randomValue);
+      _score += _randomValue;
     }
     this._streamValueController.sink.add(this._diceValues);
-    this._streamDicesScoreController.sink.add('$score');
+    this._streamDicesScoreController.sink.add('$_score');
   }
 
   @override

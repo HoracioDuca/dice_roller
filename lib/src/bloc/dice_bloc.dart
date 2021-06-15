@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:math';
-import '../styles/dimensions.dart';
+import '../styles/constants.dart';
 import 'i_dice_bloc.dart';
 
 class DiceBloc extends IDiceBloc {
@@ -17,14 +17,14 @@ class DiceBloc extends IDiceBloc {
   }
 
   @override
-  Future<void> initialize() {}
+  void initialize() {}
 
   @override
   void roll() {
     this._diceValues.clear();
     int score = 0;
-    for (int i = 0; i < Dimension.diceCount; i++) {
-      int randomValue = Random().nextInt(Dimension.diceFaces) + 1;
+    for (int i = 0; i < Constants.diceCount; i++) {
+      int randomValue = Random().nextInt(Constants.diceFaces) + 1;
       this._diceValues.add(randomValue);
       score += randomValue;
     }

@@ -1,4 +1,4 @@
-abstract class Dimension {
+abstract class Constants {
   static const String imagePath = 'assets/images/dice';
   static const String imageExtension = '.png';
   static const String initialScore = "19";

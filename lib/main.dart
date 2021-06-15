@@ -1,4 +1,4 @@
-import 'src/styles/dimensions.dart';
+import 'src/styles/constants.dart';
 import 'package:flutter/material.dart';
 import 'src/bloc/dice_bloc.dart';
 import 'src/screen/dice_screen.dart';
@@ -23,14 +23,14 @@ class _DiceRollerState extends State<DiceRoller> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: Dimension.mainAppTitle,
+      title: Constants.mainAppTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
       home: DiceScreen(
         diceBloc: this.diceBloc,
-        title: Dimension.mainAppTitle,
+        title: Constants.mainAppTitle,
       ),
     );
   }

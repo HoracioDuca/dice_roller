@@ -1,11 +1,11 @@
 import '../bloc/i_dice_bloc.dart';
-import '../styles/dimensions.dart';
+import '../styles/constants.dart';
 import 'package:flutter/material.dart';
 
 class DiceScreen extends StatefulWidget {
   DiceScreen({
-    @required this.diceBloc,
-    @required this.title,
+    required this.diceBloc,
+    required this.title,
   });
 
   final IDiceBloc diceBloc;
@@ -24,12 +24,12 @@ class _DiceScreenState extends State<DiceScreen> {
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
         title: Text(
-          Dimension.appBarTitle,
+          Constants.appBarTitle,
         ),
         centerTitle: true,
       ),
       body: StreamBuilder(
-        initialData: Dimension.initialDices,
+        initialData: Constants.initialDices,
         stream: widget.diceBloc.streamValue,
         builder: (
           context,
@@ -37,12 +37,12 @@ class _DiceScreenState extends State<DiceScreen> {
         ) {
           return GridView.count(
             padding: EdgeInsets.all(
-              Dimension.gridViewPadding,
+              Constants.gridViewPadding,
             ),
-            crossAxisCount: Dimension.gridViewCrossAxisCount,
-            crossAxisSpacing: Dimension.gridViewCrossAxisSpacing,
-            mainAxisSpacing: Dimension.gridViewMainAxisSpacing,
-            childAspectRatio: Dimension.gridViewChildAspectRatio,
+            crossAxisCount: Constants.gridViewCrossAxisCount,
+            crossAxisSpacing: Constants.gridViewCrossAxisSpacing,
+            mainAxisSpacing: Constants.gridViewMainAxisSpacing,
+            childAspectRatio: Constants.gridViewChildAspectRatio,
             children: _generateDiceContainer(
               snapshot,
             ),
@@ -53,7 +53,7 @@ class _DiceScreenState extends State<DiceScreen> {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              width: Dimension.borderSideWidth,
+              width: Constants.borderSideWidth,
               color: Colors.red,
             ),
           ),
@@ -62,47 +62,47 @@ class _DiceScreenState extends State<DiceScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: Dimension.bottomNavBarSizedBoxWeight,
+              width: Constants.bottomNavBarSizedBoxWeight,
             ),
             Text(
-              Dimension.makeItRollText,
+              Constants.makeItRollText,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: Dimension.leftTextStyleFontSize,
-                height: Dimension.textStyleHeight,
+                fontSize: Constants.leftTextStyleFontSize,
+                height: Constants.textStyleHeight,
               ),
             ),
             SizedBox(
-              width: Dimension.bottomNavBarSizedBoxWeight,
+              width: Constants.bottomNavBarSizedBoxWeight,
             ),
             Text(
-              Dimension.scoreText,
+              Constants.scoreText,
               style: TextStyle(
                 fontWeight: FontWeight.w400,
-                fontSize: Dimension.scoreNavBarFontSize,
-                height: Dimension.textStyleHeight,
+                fontSize: Constants.scoreNavBarFontSize,
+                height: Constants.textStyleHeight,
               ),
             ),
             StreamBuilder(
-              initialData: Dimension.initialScore,
+              initialData: Constants.initialScore,
               stream: widget.diceBloc.streamDicesScore,
               builder: (
                 context,
                 snapshot,
               ) {
                 return Text(
-                  snapshot.data,
+                  snapshot.data.toString(),
                   style: TextStyle(
                     color: Colors.brown,
-                    fontSize: Dimension.scoreNavBarFontSize,
+                    fontSize: Constants.scoreNavBarFontSize,
                     fontWeight: FontWeight.bold,
-                    height: Dimension.textStyleHeight,
+                    height: Constants.textStyleHeight,
                   ),
                 );
               },
             ),
             SizedBox(
-              width: Dimension.bottomNavBarSizedBoxWeight,
+              width: Constants.bottomNavBarSizedBoxWeight,
             ),
           ],
         ),
@@ -122,7 +122,7 @@ class _DiceScreenState extends State<DiceScreen> {
           child: Container(
             child: Image(
               image: AssetImage(
-                Dimension.imagePath + '$diceFace' + Dimension.imageExtension,
+                Constants.imagePath + '$diceFace' + Constants.imageExtension,
               ),
             ),
           ),
